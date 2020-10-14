@@ -1,5 +1,5 @@
 {
-  "name": "test-article-filterable-table-ts",
+  "name": "dnd-character-builder",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,9 +10,19 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "@types/react-redux": "^7.1.9",
+    "@types/redux": "^3.6.0",
+    "@types/redux-thunk": "^2.1.0",
+    "@types/styled-components": "^5.1.3",
+    "antd": "^4.7.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-redux": "^7.2.1",
     "react-scripts": "3.4.3",
+    "react-simple-checkbox": "^1.3.0",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^5.2.0",
     "typescript": "~3.7.2"
   },
   "scripts": {
@@ -35,5 +45,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {
+    "@types/enzyme": "^3.10.7",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.5",
+    "redux-devtools-extension": "^2.13.8"
+  },
+  "typings": "./src/typings/react-simple-checkbox.d.ts"
 }
