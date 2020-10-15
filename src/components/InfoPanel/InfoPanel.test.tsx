@@ -7,14 +7,14 @@ import { createStore } from 'redux';
 import { reducer } from '../../store/reducer';
 import { Provider } from 'react-redux';
 import { IState } from '../../interfaces/interfaces';
-import { SelectPanel } from './SelectPanel';
 import { Select } from 'antd';
 import { setSelectType } from '../../store/actions';
 import { SELECT_TYPE } from '../../common/constants';
+import { SelectPanel } from '../SelectPanel/SelectPanel';
 
 Enzyme.configure({ adapter: new EnzymeAdapter()});
 
-describe.skip('<SelectPanel /> component', () => {
+describe('<SelectPanel /> component', () => {
 	let wrapper: any = null;
 	let mockStoreForDispatch: any = '';
 
