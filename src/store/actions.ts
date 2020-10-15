@@ -1,4 +1,4 @@
-import { SET_CLASSES, SET_SELECTED_CHARACTER, SET_SELECT_TYPE, SET_SUBCLASSES, actionTypes, CLEAR_SELECTED_CHARACTER, SET_SELECTED_CLASS_SPELLS } from "./constants";
+import { SET_CLASSES, SET_SELECTED_CHARACTER, SET_SELECT_TYPE, SET_SUBCLASSES, actionTypes, CLEAR_SELECTED_CHARACTER, SET_SELECTED_CLASS_SPELLS, SET_SELECTED_SUBCLASS_SPELLS } from "./constants";
 import { ISelectType, IGenericEntity, ICharacter, IAntSelectEvent } from '../interfaces/interfaces';
 import { Dispatch } from "redux";
 import { API_ENDPOINT_CLASSES, API_ENDPOINT_SUBCLASSES, API_ENDPOINT_BASE } from '../common/constants';
@@ -29,6 +29,11 @@ export const clearSelectedCharacter = (): actionTypes => ({
 
 export const setSelectedClassSpells = (results: IGenericEntity[]): actionTypes => ({
 	type: SET_SELECTED_CLASS_SPELLS,
+	payload: results
+})
+
+export const setSelectedSubclassSpells = (results: IGenericEntity[]): actionTypes => ({
+	type: SET_SELECTED_SUBCLASS_SPELLS,
 	payload: results
 })
 
@@ -64,12 +69,25 @@ export const loadSelectedCharacter = (selected: IAntSelectEvent) => (
 
 export const loadClassSpells = (selectedCharacter: any) => (
 	async (dispatch: Dispatch) => {
-		if (selectedCharacter.spells && typeof selectedCharacter.spells === 'string') {
-			const response = await fetch(API_ENDPOINT_BASE + selectedCharacter.spells, {
-				method: 'GET'
-			});
-			const responseJson = await response.json();
-			return dispatch(setSelectedClassSpells(responseJson.results))
+		if (selectedCharacter && selectedCharacter.spells) {
+
+			if (typeof selectedCharacter.spells === 'string') { // selected character is class
+				const response = await fetch(API_ENDPOINT_BASE + selectedCharacter.spells, {
+					method: 'GET'
+				});
+				const responseJson = await response.json();
+				dispatch(setSelectedClassSpells(responseJson.results))
+
+			} else { // selected character is subclass
+				const response = await fetch(API_ENDPOINT_BASE + selectedCharacter.class.url + '/spells', {
+					method: 'GET'
+				});
+				const responseJson = await response.json();
+				dispatch(setSelectedClassSpells(responseJson.results))
+
+				const spellMapper = selectedCharacter.spells.map((item: any) => item.spell)
+				dispatch(setSelectedSubclassSpells(spellMapper))
+			}
 		}
 	}
 )

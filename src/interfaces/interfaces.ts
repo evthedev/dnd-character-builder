@@ -18,7 +18,8 @@ export interface ICharacter extends IGenericEntity {
 }
 
 export interface ISpellsPanelProps {
-	selectedCharacter: any;
+	spells: IGenericEntity[];
+	title: string;
 }
 
 export interface IState {

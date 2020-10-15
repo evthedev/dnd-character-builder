@@ -49,9 +49,11 @@
   "devDependencies": {
     "@types/enzyme": "^3.10.7",
     "@types/enzyme-adapter-react-16": "^1.0.6",
+    "@types/redux-mock-store": "^1.0.2",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.5",
-    "redux-devtools-extension": "^2.13.8"
+    "redux-devtools-extension": "^2.13.8",
+    "redux-mock-store": "^1.5.4"
   },
   "typings": "./src/typings/react-simple-checkbox.d.ts"
 }

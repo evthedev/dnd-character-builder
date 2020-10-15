@@ -31,7 +31,7 @@ export const MainPanel: React.FC = (): JSX.Element => {
 						<InfoPanel />
 					</Col>
 					<Col xs={{span: 24}} lg={{span: 5}}>
-						{/* <SpellsPanel /> */}
+						{/* <SpellsPanel /> */}q
 					</Col>
 				</Row>
 				

@@ -7,6 +7,7 @@ export const SET_SELECTED_CHARACTER = 'SET_SELECTED_CHARACTER';
 export const GET_SELECTED_CHARACTER = 'GET_SELECTED_CHARACTER';
 export const CLEAR_SELECTED_CHARACTER = 'CLEAR_SELECTED_CHARACTER';
 export const SET_SELECTED_CLASS_SPELLS = 'SET_SELECTED_CLASS_SPELLS';
+export const SET_SELECTED_SUBCLASS_SPELLS = 'SET_SELECTED_SUBCLASS_SPELLS';
 export const GET_SUBCLASSES = 'GET_SUBCLASSES';
 
 export interface SetSelectTypeAction {
@@ -43,4 +44,9 @@ export interface SetSelectedClassSpellsAction {
 	payload: IGenericEntity[]
 }
 
-export type actionTypes = SetSelectTypeAction | SetClassesAction | SetSubclassesAction | SetSelectedCharacterAction | GetSelectedCharacterAction | ClearSelectedCharacterAction | SetSelectedClassSpellsAction
+export interface SetSelectedSubclassSpellsAction {
+	type: typeof SET_SELECTED_SUBCLASS_SPELLS;
+	payload: IGenericEntity[]
+}
+
+export type actionTypes = SetSelectTypeAction | SetClassesAction | SetSubclassesAction | SetSelectedCharacterAction | GetSelectedCharacterAction | ClearSelectedCharacterAction | SetSelectedClassSpellsAction | SetSelectedSubclassSpellsAction

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { Typography, Row, Col } from 'antd';
+import { Typography, Row, Col, Divider } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearClassSpells, loadClassSpells } from '../../store/actions';
 import { ISpellsPanelProps, IState } from '../../interfaces/interfaces';
@@ -8,26 +8,18 @@ import { ISpellsPanelProps, IState } from '../../interfaces/interfaces';
 const { Title, Paragraph } = Typography;
 
 export const SpellsPanel: React.FC<ISpellsPanelProps> = (props): JSX.Element => {
-	const dispatch = useDispatch();
-
-	const selectedClassSpells = useSelector((state: IState) => state.selectedClassSpells)
-
-	useEffect(() => {
-		dispatch(loadClassSpells(props.selectedCharacter));
-		return () => {
-			dispatch(clearClassSpells())
-		}
-	}, [props.selectedCharacter])
 
 	return (
 		<Row gutter={{ xs: 8, sm: 16 }}>
 			<Col span={24}>
-				<Title level={4}>Class Spells</Title>
-				{ selectedClassSpells.length > 0 ?
+				<Divider orientation="left">
+					<Title level={5} style={{ marginBottom: 0 }}>{ props.title }</Title>
+				</Divider>				
+				{ props.spells.length > 0 ?
 					<Row gutter={{ xs: 8, sm: 16 }}>
-						{ selectedClassSpells.map(item => (
-							<Col span={12}>
-								<Paragraph key={ item.index }>{ item.name }</Paragraph>
+						{ props.spells.map(item => (
+							<Col span={12} key={ item.index }>
+								<Paragraph>{ item.name }</Paragraph>
 							</Col>
 						))
 						}

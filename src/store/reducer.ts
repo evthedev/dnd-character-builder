@@ -1,6 +1,6 @@
 import { defaultState } from '../common/defaults';
 import { IState } from '../interfaces/interfaces';
-import { SET_SELECT_TYPE, SET_CLASSES, SET_SUBCLASSES, SET_SELECTED_CHARACTER, CLEAR_SELECTED_CHARACTER, actionTypes, SET_SELECTED_CLASS_SPELLS } from './constants';
+import { SET_SELECT_TYPE, SET_CLASSES, SET_SUBCLASSES, SET_SELECTED_CHARACTER, CLEAR_SELECTED_CHARACTER, actionTypes, SET_SELECTED_CLASS_SPELLS, SET_SELECTED_SUBCLASS_SPELLS } from './constants';
 
 export const reducer = (state: IState = defaultState, action: actionTypes): IState => {
 	switch (action.type) {
@@ -33,6 +33,11 @@ export const reducer = (state: IState = defaultState, action: actionTypes): ISta
 			return {
 				...state,
 				selectedClassSpells: action.payload
+			}
+		case SET_SELECTED_SUBCLASS_SPELLS:
+			return {
+				...state,
+				selectedSubclassSpells: action.payload
 			}
 		default:
 			return state		
