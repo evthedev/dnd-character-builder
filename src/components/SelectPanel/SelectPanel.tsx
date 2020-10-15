@@ -27,7 +27,7 @@ export const SelectPanel: React.FC = React.memo((): JSX.Element => {
 	}
 
 	const handleCharacterSelect = (selected: IAntSelectEvent) => {
-		dispatch(loadSelectedCharacter(selected));
+		dispatch(loadSelectedCharacter(selected)); 
 	}
 
 	return (
