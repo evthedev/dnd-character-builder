@@ -4,6 +4,9 @@ import { Layout, Typography, Row, Col } from 'antd';
 import { SelectPanel } from '../SelectPanel/SelectPanel';
 import { InfoPanel } from '../InfoPanel/InfoPanel';
 import { LevelsPanel } from '../LevelsPanel/LevelsPanel';
+import { useSelector } from 'react-redux';
+import { IState } from '../../interfaces/interfaces';
+import { SELECT_TYPE } from '../../common/constants';
 
 const { Header, Content, Footer } = Layout;
 const { Title } = Typography;
@@ -18,6 +21,8 @@ const headerStyle: any = {
 }
 
 export const MainPanel: React.FC = (): JSX.Element => {
+	const selectType = useSelector((state: IState) => state.selectType)
+	
 	return (
 		<Layout className="layout" style={{height: '100vh'}}>
 			<Header style={headerStyle}>
@@ -32,7 +37,9 @@ export const MainPanel: React.FC = (): JSX.Element => {
 						<InfoPanel />
 					</Col>
 					<Col xs={{span: 24}} lg={{span: 7}}>
-						<LevelsPanel />
+						{ selectType === SELECT_TYPE.Subclass &&
+							<LevelsPanel />
+						}
 					</Col>
 				</Row>
 				

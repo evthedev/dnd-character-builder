@@ -1,14 +1,11 @@
 import React from 'react';
-import Enzyme, { mount, shallow } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
 import EnzymeAdapter from 'enzyme-adapter-react-16';
-import { Wrapper } from '../../common/Wrapper';
-import { Paragraph } from '../../common/Paragraph';
 import { createStore } from 'redux';
 import { reducer } from '../../store/reducer';
 import { Provider } from 'react-redux';
 import { IState } from '../../interfaces/interfaces';
 import { Select } from 'antd';
-import { setSelectType } from '../../store/actions';
 import { SELECT_TYPE } from '../../common/constants';
 import { SelectPanel } from '../SelectPanel/SelectPanel';
 
@@ -16,7 +13,6 @@ Enzyme.configure({ adapter: new EnzymeAdapter()});
 
 describe('<SelectPanel /> component', () => {
 	let wrapper: any = null;
-	let mockStoreForDispatch: any = '';
 
     const mockInitialState: IState = {
         selectType: null,
@@ -52,12 +48,6 @@ describe('<SelectPanel /> component', () => {
         </Provider>
     )
     
-    // beforeEach(() => {
-	// 	mockStoreForDispatch = createStore(reducer, mockInitialState);
-	// 	mockStoreForDispatch.dispatch = jest.fn();
-    //     wrapper = getWrapper(mockStoreForDispatch);
-    // });
-
 	it('should mount correctly', () => {
 
 		const mockStore = createStore(reducer, mockInitialState);
@@ -69,28 +59,9 @@ describe('<SelectPanel /> component', () => {
 
 	it('should render only one <Select> component', () => {
 		const mockStore = createStore(reducer, mockInitialState);
-		// mockStore.dispatch = jest.fn();
         wrapper = getWrapper(mockStore);
 
 		expect(wrapper.find(Select).length).toBe(1);
-		
-		
-		// wrapper.find(Select).simulate('click');
-		// expect(wrapper.find('.ant-select-open').length).toBe(1);
-		// expect(wrapper.find('.ant-select-dropdown').not.to.hasClass('ant-select-dropdown-hidden')).toBe(true);
-		// expect(wrapper.find('.ant-select-dropdown').not.hasClass('ant-select-dropdown-hidden')).toBe(false);
-
-		// wrapper.find('.rc-virtual-list-holder-inner .ant-select-item-option:nth-child(2)').simulate('click');
-
-        // expect(mockStoreForDispatch.dispatch).toHaveBeenCalledWith(setSelectType(SELECT_TYPE.Subclass))
-        
-		
-		// expect(wrapper.find('#select-class-subclass').length).toBe(0);
-		
-
-        // expect(wrapper.contains(Wrapper)).toEqual(true);
-        // expect(wrapper.find(Paragraph).text()).toEqual('Filter by status');
-        // expect(wrapper.contains(StatusFilter)).toEqual(true);
 	})
 
 	it('should render both <Select> components', () => {

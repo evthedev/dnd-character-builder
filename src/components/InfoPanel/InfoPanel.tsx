@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import { Typography, Card, Space } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';

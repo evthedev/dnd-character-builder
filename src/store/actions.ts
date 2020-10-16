@@ -2,6 +2,7 @@ import { SET_CLASSES, SET_SELECTED_CHARACTER, SET_SELECT_TYPE, SET_SUBCLASSES, a
 import { ISelectType, IGenericEntity, ICharacter, IAntSelectEvent } from '../interfaces/interfaces';
 import { Dispatch } from "redux";
 import { API_ENDPOINT_CLASSES, API_ENDPOINT_SUBCLASSES, API_ENDPOINT_BASE } from '../common/constants';
+import { getUniqueArray } from "../components/helpers/getUniqueArray";
 
 export const setSelectType = (selectType: ISelectType): actionTypes => ({
 	type: SET_SELECT_TYPE,
@@ -78,17 +79,17 @@ export const loadClassSpells = (selectedCharacter: any) => (
 				const responseJson = await response.json();
 				// some spell sets seem to have duplicates
 				// const uniqueResults = responseJson.results.filter((value:any, index: number, self:any) => self.indexOf(value) === index);
-				dispatch(setSelectedClassSpells(responseJson.results))
+				dispatch(setSelectedClassSpells(getUniqueArray(responseJson.results)))
 
 			} else { // selected character is subclass
 				const response = await fetch(API_ENDPOINT_BASE + selectedCharacter.class.url + '/spells', {
 					method: 'GET'
 				});
 				const responseJson = await response.json();
-				dispatch(setSelectedClassSpells(responseJson.results))
+				dispatch(setSelectedClassSpells(getUniqueArray(responseJson.results)))
 
 				const spellMapper = selectedCharacter.spells.map((item: any) => item.spell)
-				dispatch(setSelectedSubclassSpells(spellMapper))
+				dispatch(setSelectedSubclassSpells(getUniqueArray(spellMapper)))
 			}
 		}
 	}

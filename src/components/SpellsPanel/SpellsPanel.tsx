@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { Typography, Row, Col, Divider } from 'antd';
 import { ISpellsPanelProps } from '../../interfaces/interfaces';
