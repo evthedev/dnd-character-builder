@@ -17,8 +17,10 @@ export const SelectPanel: React.FC = React.memo((): JSX.Element => {
 
 	const handleChange = (selectedType: any): void => {
 		const selectedTypeValue = selectedType.value;
+
 		dispatch(setSelectType(selectedTypeValue));
 		dispatch(clearSelectedCharacter());
+		
 		if (selectedTypeValue === SELECT_TYPE.Class && classes.length === 0) {
 			dispatch(fetchClassesFromApi());
 		} else if (selectedTypeValue === SELECT_TYPE.Subclass && subclasses.length === 0) {

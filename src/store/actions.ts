@@ -76,6 +76,8 @@ export const loadClassSpells = (selectedCharacter: any) => (
 					method: 'GET'
 				});
 				const responseJson = await response.json();
+				// some spell sets seem to have duplicates
+				// const uniqueResults = responseJson.results.filter((value:any, index: number, self:any) => self.indexOf(value) === index);
 				dispatch(setSelectedClassSpells(responseJson.results))
 
 			} else { // selected character is subclass
@@ -92,8 +94,9 @@ export const loadClassSpells = (selectedCharacter: any) => (
 	}
 )
 
-export const clearClassSpells = () => (
+export const clearSpells = () => (
 	async (dispatch: Dispatch) => {
-		return dispatch(setSelectedClassSpells([]))
+		dispatch(setSelectedClassSpells([]))
+		dispatch(setSelectedSubclassSpells([]))
 	}
 )

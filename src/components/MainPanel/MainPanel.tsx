@@ -3,6 +3,7 @@ import React from 'react';
 import { Layout, Typography, Row, Col } from 'antd';
 import { SelectPanel } from '../SelectPanel/SelectPanel';
 import { InfoPanel } from '../InfoPanel/InfoPanel';
+import { LevelsPanel } from '../LevelsPanel/LevelsPanel';
 
 const { Header, Content, Footer } = Layout;
 const { Title } = Typography;
@@ -27,11 +28,11 @@ export const MainPanel: React.FC = (): JSX.Element => {
 					<Col xs={{span: 24}} lg={{span: 7}}>
 						<SelectPanel />
 					</Col>
-					<Col xs={{span: 24}} lg={{span: 12}}>
+					<Col xs={{span: 24}} lg={{span: 10}}>
 						<InfoPanel />
 					</Col>
-					<Col xs={{span: 24}} lg={{span: 5}}>
-						{/* <SpellsPanel /> */}q
+					<Col xs={{span: 24}} lg={{span: 7}}>
+						<LevelsPanel />
 					</Col>
 				</Row>
 				

@@ -5,12 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IState } from '../../interfaces/interfaces';
 import { AliwangwangOutlined } from '@ant-design/icons';
 import { SpellsPanel } from '../SpellsPanel/SpellsPanel';
-import { clearClassSpells, loadClassSpells } from '../../store/actions';
+import { clearSpells, loadClassSpells } from '../../store/actions';
+import { SELECT_TYPE } from '../../common/constants';
 
 const { Title } = Typography;
 
 export const InfoPanel: React.FC = React.memo((): JSX.Element => {
 	const dispatch = useDispatch();
+	const selectType = useSelector((state: IState) => state.selectType)
 	const selectedCharacter = useSelector((state: IState) => state.selectedCharacter)
 	const selectedClassSpells = useSelector((state: IState) => state.selectedClassSpells)
 	const selectedSubclassSpells = useSelector((state: IState) => state.selectedSubclassSpells)
@@ -18,29 +20,27 @@ export const InfoPanel: React.FC = React.memo((): JSX.Element => {
 	useEffect(() => {
 		dispatch(loadClassSpells(selectedCharacter));
 		return () => {
-			dispatch(clearClassSpells())
+			dispatch(clearSpells())
 		}
 	}, [selectedCharacter])
 	
 	return (
-		<Fragment>
-			<Space direction="vertical" style={{ width: '100%' }}>
-				{ selectedCharacter &&
-					<Card size="small" title="Your selected character" style={{ width: '100%' }}>
-						<Title level={4}><AliwangwangOutlined /> {selectedCharacter.name}</Title>
-						{ selectedCharacter.desc &&
-							<Title level={5}>{selectedCharacter.desc}</Title>
-						}
-						{ selectedClassSpells && selectedClassSpells.length > 0 &&
-							<SpellsPanel spells={selectedClassSpells} title='Class Spells' />
-						}	
-						{ selectedSubclassSpells && selectedSubclassSpells.length > 0 &&
-							<SpellsPanel spells={selectedSubclassSpells} title='SubClass Spells' />
-						}	
-					</Card>
-				}
+		<Space direction="vertical" style={{ width: '100%' }}>
+			{ selectedCharacter &&
+				<Card size="small" title="Your selected character" style={{ width: '100%' }}>
+					<Title level={4}><AliwangwangOutlined /> {selectedCharacter.name}</Title>
+					{ selectedCharacter.desc &&
+						<Title level={5}>{selectedCharacter.desc}</Title>
+					}
+					{ selectedClassSpells &&
+						<SpellsPanel spells={selectedClassSpells} title='Class Spells' />
+					}	
+					{ selectType === SELECT_TYPE.Subclass &&
+						<SpellsPanel spells={selectedSubclassSpells} title='SubClass Spells' />
+					}	
+				</Card>
+			}
 
-			</Space>		
-		</Fragment>
+		</Space>
 	)
 })

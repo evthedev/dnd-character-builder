@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { Typography, Row, Col, Divider } from 'antd';
-import { useDispatch, useSelector } from 'react-redux';
-import { clearClassSpells, loadClassSpells } from '../../store/actions';
-import { ISpellsPanelProps, IState } from '../../interfaces/interfaces';
+import { ISpellsPanelProps } from '../../interfaces/interfaces';
 
 const { Title, Paragraph } = Typography;
 
