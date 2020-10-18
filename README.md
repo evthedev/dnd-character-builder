@@ -23,5 +23,6 @@ $ npm test
 
 * Higher levels automatically inherit spells from the lower levels.
 
-## Known issues
+## Areas of improvement
 * Not all components are unit tested. `MainPanel`, `InfoPanel` and `SelectPanel` however, consists of the minimum recommended test aspects - props and state.
+* When fetching data, some components display 'No data' or 'No spells'. This can be improved by rendering a skeleton or hints while waiting for data to be fetched.
