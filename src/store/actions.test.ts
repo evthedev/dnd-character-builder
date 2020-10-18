@@ -22,16 +22,3 @@ it('should dispatch action', () => {
 	const expectedPayload = { type: SET_SELECT_TYPE, payload: SELECT_TYPE.Subclass }
 	expect(actions).toEqual([expectedPayload])
 })
-
-
-
-// it('should execute fetch data', () => {
-//   const store = mockStore({})
-
-//   // Return the promise
-//   return store.dispatch(fetchData())
-//     .then(() => {
-//       const actions = store.getActions()
-//       expect(actions[0]).toEqual(success())
-//     })
-// })
