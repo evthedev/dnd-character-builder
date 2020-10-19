@@ -1,15 +1,12 @@
 import React from 'react';
-import Enzyme, { mount, shallow } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
 import EnzymeAdapter from 'enzyme-adapter-react-16';
-import { Wrapper } from '../../common/Wrapper';
-import { Paragraph } from '../../common/Paragraph';
 import { createStore } from 'redux';
 import { reducer } from '../../store/reducer';
 import { Provider } from 'react-redux';
 import { IState } from '../../interfaces/interfaces';
 import { SelectPanel } from './SelectPanel';
 import { Select } from 'antd';
-import { setSelectType } from '../../store/actions';
 import { SELECT_TYPE } from '../../common/constants';
 
 Enzyme.configure({ adapter: new EnzymeAdapter()});

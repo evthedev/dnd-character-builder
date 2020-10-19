@@ -26,8 +26,7 @@ export interface IState {
 	selectType: ISelectType;
 	characterClasses: ICharacter[];
 	characterSubclasses: ICharacter[];
-	// selectedCharacter: ICharacter | null;
-	selectedCharacter: any;
+	selectedCharacter: any; // needs typing
 	selectedClassSpells: IGenericEntity[];
 	selectedSubclassSpells: IGenericEntity[];
 	selectedSubclassLevel: IGenericEntity | null;
